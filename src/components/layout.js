@@ -1,7 +1,27 @@
 import React from "react"
 import { Link } from "gatsby"
-
+import styled, {css} from 'styled-components';
 import { rhythm, scale } from "../utils/typography"
+
+const Wrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+  max-Width: ${rhythm(36)};
+  padding: ${rhythm(3)} ${rhythm(4)};
+  background-color: white;
+
+  @media screen and (max-width:768px) {
+    padding: ${rhythm(1.5)} ${rhythm(2)};
+  }
+  @media screen and (max-width:432px) {
+    padding: ${rhythm(1.5)} ${rhythm(1)};
+    font-size: 15px;
+    h1, h2, h3, h4{
+      font-size: 20px;
+    }
+  }
+`
 
 class Layout extends React.Component {
   render() {
@@ -13,7 +33,7 @@ class Layout extends React.Component {
       header = (
         <h1
           style={{
-            ...scale(1.5),
+            ...scale(3 / 2),
             marginBottom: rhythm(1.5),
             marginTop: 0,
           }}
@@ -34,7 +54,6 @@ class Layout extends React.Component {
       header = (
         <h3
           style={{
-            fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
           }}
         >
@@ -52,14 +71,7 @@ class Layout extends React.Component {
       )
     }
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
+      <Wrapper>
         <header>{header}</header>
         <main>{children}</main>
         <footer>
@@ -67,7 +79,7 @@ class Layout extends React.Component {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
+      </Wrapper>
     )
   }
 }
